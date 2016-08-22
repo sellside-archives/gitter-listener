@@ -2,7 +2,20 @@
 
 var co = require('co');
 var Gitter = require('../');
-var config = require('./config.json');
+
+var config = {};
+
+try {
+  // this file is excluded from git. It just needs a property named `GITTER_TOKEN` with your gitter token.
+  config = require('./config.json');
+} catch (err) {
+  console.error();
+  console.error('To run the example, you need to create a `config.json` file in the `example` folder that looks like:');
+  console.error();
+  console.error(JSON.stringify({ GITTER_TOKEN: 'XXXXXXXXXX' }, null, 2));
+  console.error();
+  process.exit(1);
+}
 
 function reporter(type) {
   return function(msg, room, user) {
