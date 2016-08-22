@@ -12,7 +12,7 @@ var subscribe = require('./lib/subscribe');
  * Creates a client that listens for gitter events.
  *
  * ```js
- * var client = Client(process.env.GITTER_TOKEN);
+ * var gitter = Gitter(process.env.GITTER_TOKEN);
  * ```
  *
  * @param {String} `token` Gitter token from [the gitter developer apps page](https://developer.gitter.im/apps).
@@ -34,9 +34,11 @@ function Client(token, options) {
  * Tell the client to start listening for gitter events. Setup any event listeners for the events before starting the client.
  *
  * ```js
- * client.on('chatMessages', console.log);
- * client.on('users', console.log);
- * client.on('events', console.log);
+ * gitter.on('chatMessages', console.log);
+ * gitter.on('users', console.log);
+ * gitter.on('events', console.log);
+ *
+ * gitter.listen();
  * ```
  *
  * @param  {Array} `rooms` Optional array of rooms to listen to. If empty, the client will use all the rooms the gitter user has previously joined. The gitter user is the user associated with the token used above.

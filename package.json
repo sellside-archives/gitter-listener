@@ -31,5 +31,28 @@
   "keywords": [
     "gitter",
     "listener"
-  ]
+  ],
+  "devDependencies": {
+    "gulp-format-md": "^0.1.10"
+  },
+  "verb": {
+    "toc": true,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "lint": {
+      "reflinks": true
+    },
+    "related": {
+      "list": []
+    },
+    "reflinks": [
+      "verb",
+      "verb-generate-readme"
+    ]
+  }
 }
