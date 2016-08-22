@@ -23,5 +23,11 @@
   "keywords": [
     "gitter",
     "listener"
-  ]
+  ],
+  "dependencies": {
+    "co": "^4.6.0",
+    "component-emitter": "^1.2.1",
+    "extend-shallow": "^2.0.1",
+    "node-gitter": "^2.0.4"
+  }
 }
