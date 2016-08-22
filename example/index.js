@@ -5,7 +5,9 @@ var Gitter = require('../');
 var config = require('./config.json');
 
 function reporter(type) {
-  return function(msg) {
+  return function(msg, room, user) {
+    console.log('[room]: ', room.name);
+    console.log('[user]: ', user.displayName);
     console.log(`[${type}]: `, msg);
   };
 }
@@ -19,8 +21,7 @@ co(function*() {
   return gitter.listen();
 })
 .then(function(results) {
-  console.log('done');
-  console.log(results);
+  console.log('connected');
 }, function(err) {
   console.error('error');
   console.error(err);
