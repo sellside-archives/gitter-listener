@@ -1,7 +1,7 @@
 {
   "name": "gitter-listener",
   "description": "Listen for gitter room events and messages.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/sellside/gitter-listener",
   "author": "Brian Woodward (https://github.com/doowb)",
   "repository": "sellside/gitter-listener",
@@ -33,7 +33,8 @@
     "listener"
   ],
   "devDependencies": {
-    "gulp-format-md": "^0.1.10"
+    "gulp-format-md": "^0.1.10",
+    "mocha": "^3.0.2"
   },
   "verb": {
     "toc": true,
