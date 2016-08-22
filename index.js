@@ -1,13 +1,11 @@
 'use strict';
 
-var co = require('co');
-var Gitter = require('node-gitter');
-var extend = require('extend-shallow');
-var Emitter = require('component-emitter');
+var utils = require('./lib/utils');
 
 // polyfill the User class
 require('./lib/user');
 var findRoom = require('./lib/find-room');
+var filterRoom = require('./lib/filter-room');
 var subscribe = require('./lib/subscribe');
 
 /**
@@ -26,10 +24,10 @@ function Client(token, options) {
   if (!(this instanceof Client)) {
     return new Client(token, options);
   }
-  Emitter(this);
+  utils.Emitter(this);
 
-  this.options = extend({}, options);
-  this.gitter = new Gitter(token, this.options);
+  this.options = utils.extend({}, options);
+  this.gitter = new utils.Gitter(token, this.options);
 }
 
 /**
@@ -48,20 +46,17 @@ function Client(token, options) {
 
 Client.prototype.listen = function(rooms) {
   var self = this;
-  return co(function*() {
+  return utils.co(function*() {
     var user = yield self.gitter.currentUser();
-    rooms = arrayify(rooms);
+    rooms = utils.arrayify(rooms);
     if (!rooms.length) {
       rooms = yield user.rooms();
     }
 
     rooms = yield rooms.map(findRoom(self));
-    return yield rooms.map(subscribe(self))
-      then(function(results) {
-        return true;
-      }, function(err) {
-        throw err;
-      });
+    rooms = rooms.filter(filterRoom(self));
+    yield rooms.map(subscribe(self))
+    return true;
   });
 };
 
@@ -70,7 +65,3 @@ Client.prototype.listen = function(rooms) {
  */
 
 module.exports = Client;
-
-function arrayify(val) {
-  return val ? (Array.isArray(val) ? val : [val]) : [];
-}
