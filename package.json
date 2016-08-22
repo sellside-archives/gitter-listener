@@ -1,0 +1,27 @@
+{
+  "name": "gitter-listener",
+  "description": "Listen for gitter room events and messages.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/sellside/gitter-listener",
+  "author": "Brian Woodward (https://github.com/doowb)",
+  "repository": "sellside/gitter-listener",
+  "bugs": {
+    "url": "https://github.com/sellside/gitter-listener/issues"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "LICENSE"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "gitter",
+    "listener"
+  ]
+}
