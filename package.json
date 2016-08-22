@@ -11,6 +11,7 @@
   "license": "MIT",
   "files": [
     "index.js",
+    "lib",
     "LICENSE"
   ],
   "main": "index.js",
@@ -20,14 +21,15 @@
   "scripts": {
     "test": "mocha"
   },
-  "keywords": [
-    "gitter",
-    "listener"
-  ],
   "dependencies": {
     "co": "^4.6.0",
     "component-emitter": "^1.2.1",
     "extend-shallow": "^2.0.1",
+    "lazy-cache": "^2.0.1",
     "node-gitter": "^2.0.4"
-  }
+  },
+  "keywords": [
+    "gitter",
+    "listener"
+  ]
 }
